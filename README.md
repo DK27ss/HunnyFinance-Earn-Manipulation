@@ -151,7 +151,7 @@ with instant `loyaltyRatio`, the attacker therefore receives a `100% bonus` base
 
 ### Principal Manipulation
 
-The `principal` recalculation logic in `unstake()` must be removed. A user's principal should only ever decrease by the explicit amount of capital they are withdrawing. It should never be inferred from a volatile token balance.
+The `principal` recalculation logic in `unstake()` must be removed. A user `principal` should only ever decrease by the explicit amount of capital they are withdrawing, It should never be inferred from a volatile token balance.
 
 ```solidity
 // Recommended logic for principal decrease
@@ -161,7 +161,7 @@ bonusInfo[msg.sender].principal = bonusInfo[msg.sender].principal.sub(amountToUn
 
 ### Epoch Manipulation
 
-The `rebase()` function must be hardened against manipulation. It should process multiple pending epochs in a single call to ensure that the contract state is updated atomically. To prevent out-of-gas errors, this loop should be capped.
+The `rebase()` function must be hardened against manipulation, it should process multiple pending epochs in a single call to ensure that the contract state is updated atomically, to prevent out-of-gas errors, this loop should be capped.
 
 ```solidity
 // Recommended fix for rebase()
