@@ -149,8 +149,8 @@ https://app.blocksec.com/explorer/tx/bsc/0x2fde0b10da04e2b13f0572fd928363a75a5cd
 
 ### Impact
 
-*   **Drain Funds** Direct and critical threat to the **$50,163** of TVL. An attacker can systematically drain funds from the contract.
-*   This attack completely nullifies the time-based staking incentive (loyalty), which is a core part of the protocol tokenomics, It allows an attacker to extract the maximum bonus immediately after staking.
+*   **Drain** Direct and critical threat to the **$50,163** (10,114,087 LOVE) of TVL, an attacker can systematically drain funds from the contract.
+*   This attack completely nullifies the time-based staking incentive `loyalty`, which is a core part of the protocol tokenomics, It allows an attacker to extract the maximum bonus immediately after staking.
 *   When combined with the principal manipulation vulnerability, an attacker can first create a large amount of fake `earned` tokens, and then use this second exploit to claim a bonus on them immediately at a 100% ratio.
 
 ---
