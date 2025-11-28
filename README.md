@@ -66,7 +66,7 @@ An attacker can artificially reduce their visible KISS balance (by transferring 
 2.  **Hide** Attacker transfers most of their KISS tokens away.
 3.  **Manipulation** Attacker calls `unstake()` with a small amount and `_bonus=0`, the contract sees a low balance and reduces their `principal` to a near-zero value.
 4.  **Recover** Attacker transfers the KISS tokens back.
-5.  **Fake Earn** The contract now calculates `earned = balance - principal`, since `principal` is near-zero, almost the entire balance is considered "earned".
+5.  **Inflated Earn** The contract now calculates `earned = balance - principal`, since `principal` is near-zero, almost the entire balance is considered "earned".
 6.  **Claim** The attacker waits for their `loyaltyRatio` to increase, then claims a large bonus based on these artificial earnings.
 
 ---
@@ -126,6 +126,12 @@ function getLoyaltyRatio(address _depositor) public view returns (uint8) {
 
 by controlling `epoch.number`, the attacker controls `epochPassed` and can grant themselves maximum loyalty instantly.
 
+<img width="1377" height="284" alt="Screenshot from 2025-11-28 15-13-31" src="https://github.com/user-attachments/assets/678e496a-2bb5-4e0c-b08e-424fe5e0d5c4" />
+
+with instant `loyaltyRatio`, the attacker therefore receives a `100% bonus` based on their inflated `earn` from the previous manipulation.
+
+<img width="585" height="284" alt="Screenshot from 2025-11-28 15-12-20" src="https://github.com/user-attachments/assets/d9be9a96-d2d2-4c93-9c78-5fe7201109af" />
+
 ### Vector
 
 1.  **Deposit** The attacker stakes any amount of LOVE, their `bonusInfo.epoch` is recorded.
@@ -136,9 +142,8 @@ by controlling `epoch.number`, the attacker controls `epochPassed` and can grant
 ### Impact
 
 *   **Drain Funds** Direct and critical threat to the **$50,163** of TVL. An attacker can systematically drain funds from the contract.
-*   **Bypasses Core Protocol Mechanic** This attack completely nullifies the time-based staking incentive (loyalty), which is a core part of the protocol tokenomics.
-*   **Instant, Unearned Gains:** It allows an attacker to extract the maximum bonus immediately after staking.
-*   **Compounding Threat** When combined with the principal manipulation vulnerability, an attacker can first create a large amount of fake `earned` tokens, and then use this second exploit to claim a bonus on them immediately at a 100% ratio.
+*   This attack completely nullifies the time-based staking incentive (loyalty), which is a core part of the protocol tokenomics, It allows an attacker to extract the maximum bonus immediately after staking.
+*   When combined with the principal manipulation vulnerability, an attacker can first create a large amount of fake `earned` tokens, and then use this second exploit to claim a bonus on them immediately at a 100% ratio.
 
 ---
 
