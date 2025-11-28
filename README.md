@@ -1,4 +1,4 @@
-# HunnyFinance Multiple Vulnerabilities Report
+# HunnyFinance - earn Inflation & loyaltyRatio Manipulation
 
 **Affected Contract:** `HyperStaking` 
 
@@ -135,9 +135,9 @@ with instant `loyaltyRatio`, the attacker therefore receives a `100% bonus` base
 ### Vector
 
 1.  **Deposit** The attacker stakes any amount of LOVE, their `bonusInfo.epoch` is recorded.
-2.  **Spam `rebase()`** The attacker calls the `rebase()` function 144 times in rapid succession, this advances `epoch.number` by 144.
-3.  **100% Loyalty** The `getLoyaltyRatio()` function now calculates `epochPassed` to be >= 144 and returns 100.
-4.  **Claim Max Bonus** The attacker can immediately call `unstake()` and claim the maximum possible bonus, a privilege that should have taken 48 days to acquire.
+2.  **Rebase** The attacker calls the `rebase()` function 144 times in rapid succession, this advances `epoch.number` by 144.
+3.  **Manipulation** The `getLoyaltyRatio()` function now calculates `epochPassed` to be >= 144 and returns 100.
+4.  **Claim** The attacker can immediately call `unstake()` and claim the maximum possible bonus, a privilege that should have taken 48 days to acquire.
 
 ### Impact
 
