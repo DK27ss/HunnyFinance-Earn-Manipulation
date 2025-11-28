@@ -155,6 +155,26 @@ https://app.blocksec.com/explorer/tx/bsc/0x2fde0b10da04e2b13f0572fd928363a75a5cd
 
 ---
 
+### Profit & HUG Dependency
+
+Nuance of this exploit lies in the final profit realization step, while the vulnerabilities allow an attacker to generate a massive `illegitimate` bonus claim, materializing this bonus as actual `LOVE` tokens is gated by another mechanism, the **HUG token**.
+
+- **HUG as a Claim Voucher** The `unstake()` function explicitly limits the claimable bonus amount (`bonusAmount`) to the attacker balance of `HUG` tokens.
+- **1:1 Burn Ratio** The `StakingVault` contract, when paying out the bonus, burns an amount of HUG tokens exactly equal to the amount of `LOVE` bonus paid out.
+
+This creates a crucial economic condition for the attack profitability:
+
+**`Price(LOVE) > Price(HUG)`**
+
+Attacker must acquire HUG tokens on the open market, the exploit is only profitable if the cost of acquiring these HUG tokens is less than the value of the `LOVE` tokens they manage to drain.
+
+This dependency on an external, low-liquidity token has two major consequences:
+
+1.  **Economic Bottleneck** The profitability of the attack is not guaranteed and depends on market conditions and the price impact (slippage) of buying the scarce HUG supply.
+2.  **Harm to Legitimate Users** It forces a competition for HUG between attackers and legitimate users, since an attacker can generate a much larger potential reward, they have a greater incentive to buy out the entire `HUG supply`, effectively blocking legitimate users from ever claiming their own, patiently-earned bonuses.
+
+---
+
 ## 4. Recommendations
 
 The `principal` recalculation logic in `unstake()` must be removed. A user `principal` should only ever decrease by the explicit amount of capital they are withdrawing, It should never be inferred from a volatile token balance.
