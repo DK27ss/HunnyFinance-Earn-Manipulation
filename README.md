@@ -1,6 +1,8 @@
 # HunnyFinance Multiple Vulnerabilities Report
 
-**Affected Contract:** `HyperStaking` (Proxy at `0x31dd9Be51cC7A96359cAaE6Cb4f5583C89D81985` on BSC)
+**Affected Contract:** `HyperStaking` 
+
+(Proxy at `0x31dd9Be51cC7A96359cAaE6Cb4f5583C89D81985` on BSC)
 
 ---
 
