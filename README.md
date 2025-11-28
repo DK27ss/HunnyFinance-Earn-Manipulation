@@ -17,7 +17,7 @@ Both vulnerabilities can be exploited independently to drain funds from the prot
 
 ---
 
-## Exploit 1 - Principal & Earned Manipulation
+## Exploit 1 - Earn Manipulation
 
 ### Description
 
@@ -77,7 +77,7 @@ An attacker can artificially reduce their visible KISS balance (by transferring 
 
 ---
 
-## Exploit 2 - Epoch & LoyaltyRatio Manipulation
+## Exploit 2 - loyaltyRatio Manipulation
 
 ### Description
 
@@ -156,8 +156,6 @@ https://app.blocksec.com/explorer/tx/bsc/0x2fde0b10da04e2b13f0572fd928363a75a5cd
 ---
 
 ## 4. Recommendations
-
-### Principal Manipulation
 
 The `principal` recalculation logic in `unstake()` must be removed. A user `principal` should only ever decrease by the explicit amount of capital they are withdrawing, It should never be inferred from a volatile token balance.
 
