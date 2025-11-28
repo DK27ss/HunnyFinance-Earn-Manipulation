@@ -62,7 +62,7 @@ An attacker can artificially reduce their visible KISS balance (by transferring 
 
 <img width="1629" height="344" alt="Screenshot from 2025-11-28 15-58-36" src="https://github.com/user-attachments/assets/6723ff02-ca5c-4c04-b84e-98c5187f2c85" />
 
-// Execution flow
+// Execution flow - https://app.blocksec.com/explorer/tx/bsc/0x78fb374db2c8ba6bd3dc0b4c69f2a9c4ac6ea4f011a6533ce6f0696913172a8e
 
 <img width="2255" height="390" alt="Screenshot from 2025-11-28 15-57-16" src="https://github.com/user-attachments/assets/45d76991-1830-4859-8a33-2d98a0020a7c" />
 
@@ -137,6 +137,8 @@ by controlling `epoch.number`, the attacker controls `epochPassed` and can grant
 with instant `loyaltyRatio`, the attacker therefore receives a `100% bonus` based on their inflated `earn` from the previous manipulation.
 
 <img width="585" height="284" alt="Screenshot from 2025-11-28 15-12-20" src="https://github.com/user-attachments/assets/d9be9a96-d2d2-4c93-9c78-5fe7201109af" />
+
+https://app.blocksec.com/explorer/tx/bsc/0x2fde0b10da04e2b13f0572fd928363a75a5cd1c2ef280107f198c713a7097008
 
 ### Vector
 
