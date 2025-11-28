@@ -60,6 +60,12 @@ function unstake(
 
 An attacker can artificially reduce their visible KISS balance (by transferring tokens to another controlled address) before calling `unstake()`, the contract interprets this as a withdrawal and drastically reduces the attacker recorded `principal`, even though they still hold the tokens.
 
+<img width="1629" height="344" alt="Screenshot from 2025-11-28 15-58-36" src="https://github.com/user-attachments/assets/6723ff02-ca5c-4c04-b84e-98c5187f2c85" />
+
+// Execution flow
+
+<img width="2255" height="390" alt="Screenshot from 2025-11-28 15-57-16" src="https://github.com/user-attachments/assets/45d76991-1830-4859-8a33-2d98a0020a7c" />
+
 ### Vector
 
 1.  **Deposit** Attacker stakes `N` LOVE, receives `N` KISS. `principal` is `N`.
