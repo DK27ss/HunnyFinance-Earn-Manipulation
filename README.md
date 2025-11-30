@@ -10,8 +10,8 @@
 
 The `HyperStaking` contract contains at least two critical vulnerabilities.
 
-1.  **Principal Manipulation:** An attacker can manipulate the internal accounting of their principal investment to generate artificial "earned" tokens, allowing them to claim illegitimate bonuses.
-2.  **Epoch Manipulation:** An attacker can bypass the time-based loyalty mechanism by repeatedly calling the `rebase()` function, granting them 100% loyalty instantly to maximize bonus theft.
+1.  **Principal Manipulation** An attacker can manipulate the internal accounting of their principal investment to generate artificial "earned" tokens, allowing them to claim illegitimate bonuses.
+2.  **Epoch Manipulation** An attacker can bypass the time-based loyalty mechanism by repeatedly calling the `rebase()` function, granting them 100% loyalty instantly to maximize bonus theft.
 
 Both vulnerabilities can be exploited independently to drain funds from the protocol.
 
