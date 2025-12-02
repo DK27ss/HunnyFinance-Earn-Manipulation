@@ -172,51 +172,5 @@ This dependency on an external, low-liquidity token has two major consequences:
 
 1.  **Economic Bottleneck** The profitability of the attack is not guaranteed and depends on market conditions and the price impact (slippage) of buying the scarce HUG supply.
 2.  **Harm to Legitimate Users** It forces a competition for HUG between attackers and legitimate users, since an attacker can generate a much larger potential reward, they have a greater incentive to buy out the entire `HUG supply`, effectively blocking legitimate users from ever claiming their own, patiently-earned bonuses.
-
----
-
-## 4. Recommendations
-
-The `principal` recalculation logic in `unstake()` must be removed. A user `principal` should only ever decrease by the explicit amount of capital they are withdrawing, It should never be inferred from a volatile token balance.
-
-```solidity
-// Recommended logic for principal decrease
-uint256 amountToUnstakeFromPrincipal = ...;
-bonusInfo[msg.sender].principal = bonusInfo[msg.sender].principal.sub(amountToUnstakeFromPrincipal);
-```
-
-### Epoch Manipulation
-
-The `rebase()` function must be hardened against manipulation, it should process multiple pending epochs in a single call to ensure that the contract state is updated atomically, to prevent out-of-gas errors, this loop should be capped.
-
-```solidity
-// Recommended fix for rebase()
-function rebase() public {
-    // Cap iterations to prevent out-of-gas, while processing enough epochs
-    // to neutralize the loyalty attack vector. 144 is a robust choice.
-    for (uint i = 0; i < 144; i++) {
-        if (epoch.endBlock <= block.number) {
-            IKISS(KISS).rebase(epoch.distribute, epoch.number);
-
-            epoch.endBlock = epoch.endBlock.add(epoch.length);
-            epoch.number++;
-
-            if (distributor != address(0)) {
-                IDistributor(distributor).distribute();
-            }
-
-            uint256 balance = contractBalance();
-            uint256 staked = IKISS(KISS).circulatingSupply();
-
-            if (balance <= staked) {
-                epoch.distribute = 0;
-            } else {
-                epoch.distribute = balance.sub(staked);
-            }
-        } else {
-            // Exit loop once all pending epochs are processed
-            break;
-        }
-    }
 }
 ```
