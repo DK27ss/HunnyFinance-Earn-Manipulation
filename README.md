@@ -172,3 +172,12 @@ This dependency on an external, low-liquidity token has two major consequences:
 
 1.  **Economic Bottleneck** The profitability of the attack is not guaranteed and depends on market conditions and the price impact (slippage) of buying the scarce HUG supply.
 2.  **Harm to Legitimate Users** It forces a competition for HUG between attackers and legitimate users, since an attacker can generate a much larger potential reward, they have a greater incentive to buy out the entire `HUG supply`, effectively blocking legitimate users from ever claiming their own, patiently-earned bonuses.
+
+>
+>Company : https://blockraider.xyz/
+>
+>Community : https://discord.gg/Vqqt7jyRr7
+>
+>Disclosure : https://t.me/blockraider_alerts_bot
+
+<img width="161" height="51" alt="blockraider" src="https://github.com/user-attachments/assets/dc86222a-b5fb-49e8-9a9d-350973b7521d" />
